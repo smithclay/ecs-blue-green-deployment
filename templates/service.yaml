@@ -148,6 +148,9 @@ Resources:
       ContainerDefinitions:
         - Name: simple-app
           Image: !Sub ${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${Repository}:${Tag}
+          EntryPoint:
+            - node
+            - index.js
           Essential: true
           Memory: 512
           PortMappings:
