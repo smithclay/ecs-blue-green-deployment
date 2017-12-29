@@ -125,7 +125,7 @@ Resources:
       TaskDefinition: !Ref TaskDefinition
       LoadBalancers:
         - ContainerName: simple-app
-          ContainerPort: 80
+          ContainerPort: 3000
           TargetGroupArn: !Ref TargetGroup
       NetworkConfiguration:
         AwsvpcConfiguration:
@@ -148,14 +148,10 @@ Resources:
       ContainerDefinitions:
         - Name: simple-app
           Image: !Sub ${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${Repository}:${Tag}
-          EntryPoint:
-            - /usr/sbin/apache2
-            - -D
-            - FOREGROUND
           Essential: true
           Memory: 512
           PortMappings:
-            - ContainerPort: 80
+            - ContainerPort: 3000
           Environment:
             - Name: Tag
               Value: !Ref Tag

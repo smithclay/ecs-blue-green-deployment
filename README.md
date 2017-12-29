@@ -1,5 +1,7 @@
 # **NOTE:** This branch uses [AWS Fargate](https://aws.amazon.com/fargate/) . If you wish not to use AWS Fargate, go to [master branch](https://github.com/awslabs/ecs-blue-green-deployment/tree/master)
 
+# **NOTE:** This is modified to use a New Relic instrumented application. See instructions on cloning the application repo below.
+
 # Blue/Green deployments on ECS
 
 This reference architecture is in reference to blog post on [blue green deployments on ECS](https://aws.amazon.com/blogs/compute/bluegreen-deployments-with-amazon-ecs/). It creates a continuous delivery by leveraging AWS CloudFormation templates. The templates creates resources using Amazon's Code* services to build and deploy containers onto an ECS cluster as long running services. It also includes a manual approval step facilitated by lambda function that discovers and swaps target group rules between 2 target groups, promoting the green version to production and demoting the blue version to staging.
@@ -19,11 +21,11 @@ Output from above must yield **AWS CLI version >= 1.11.37**
 
 #### 1. Fork ECS Sample app
 
-[Fork](https://help.github.com/articles/fork-a-repo/) the [Amazon ECS sample app](https://github.com/awslabs/ecs-demo-php-simple-app) GitHub repository into your GitHub account.
+[Fork](https://help.github.com/articles/fork-a-repo/) the [Amazon ECS sample app instrumented with New Relic](hhttps://github.com/smithclay/ecs-demo-newrelic-nodejs-simple-app) GitHub repository into your GitHub account.
 
-Clone the ECS Sample app repo
+Clone the ECS Sample app repo *instrumented with New Relic*
 ```console
-git clone https://github.com/<your_github_username>/ecs-demo-php-simple-app
+git clone https://github.com/smithclay/ecs-demo-newrelic-nodejs-simple-app
 ```
 
 #### 2. Clone ECS blue green repo
